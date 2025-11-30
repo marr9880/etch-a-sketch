@@ -1,14 +1,11 @@
-body {
-    padding: 0;
+html {
     margin: 0;
-    display: flex;
-    flex-direction: column;
+    padding: 0;
     box-sizing: border-box;
-    width: 600px;
-    height: 650px;
-};
+    display: flex;
+}
 
-.header {
+.reset {
     display: flex;
     height: 50px;
     width: 600px;
@@ -16,13 +13,17 @@ body {
     align-items: center;
 };
 
-.grid-container {
+.container {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
     height: 600px;
     width: 600px;
     justify-content: center;
     align-items: center;
+};
+
+.item {
+    display: flex;
+    background-color: lightslategray;
 };
 
