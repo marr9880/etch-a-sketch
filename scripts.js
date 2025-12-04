@@ -1,34 +1,48 @@
-const header = document.querySelector(".header");
-header.style.display = "flex";
-header.style.alignItems = "center";
-header.style.justifyContent = "center";
-
-const container = document.querySelector(".grid-container");
-container.style.display = "flex";
-container.style.flexWrap = "wrap";
-container.style.width = "600px";
-container.style.height = "600px";
-container.style.alignItems = "center";
-container.style.justifyContent = "center";
-
-let gridSize = 16;
-
-function createGridItem() {
-    const div = document.createElement("div");
-    let divHeight = 600 / gridSize;
-    let divWidth = 600 / gridSize;
-    div.classList.add("grid-item");
-    div.style.height = `${divHeight}px`;
-    div.style.width = `${divWidth}px`;
-    div.style.display = "flex";
-
-    container.appendChild(div);
-};
+let sketchArea = document.querySelector("#sketch-area");
+const sketchAreaSize = 600;
+let gridSizeInput = prompt("Enter a number from 1 - 100");
+let gridSize = Number(gridSizeInput);
+console.log(gridSize);
 
 function createGrid() {
-    for (let i = 0; i < (gridSize * gridSize); i++) {
-        createGridItem();
-    }
+    let gridItem = document.createElement("div");
+    gridItem.classList.add("grid-square");
+    gridItem.style.height = `${(sketchAreaSize / gridSize)-2}px`;
+    gridItem.style.width = `${(sketchAreaSize / gridSize)-2}px`;
+
+    sketchArea.appendChild(gridItem);
+
+    gridItem.addEventListener("mouseenter", function() {
+        gridItem.style.backgroundColor = "black";
+    });
 };
 
-createGrid();
+for (i = 0; i < gridSize*gridSize; i++) {
+    createGrid();
+};
+
+const showGrid = document.querySelector("#grid-show");
+const removeGrid = document.querySelector("#grid-remove");
+const changeGridSize = document.querySelector("#grid-size");
+const resetGrid = document.querySelector("#reset");
+const gridSquares = document.querySelectorAll(".grid-square");
+
+resetGrid.addEventListener("click", function(){
+    gridSquares.forEach(function(square) {
+        square.style.backgroundColor = "white";
+    });
+});
+
+showGrid.addEventListener("click", function(){
+    gridSquares.forEach(function(square) {
+        square.style.borderColor = "black";
+    });
+});
+
+removeGrid.addEventListener("click", function(){
+    gridSquares.forEach(function(square) {
+        square.style.borderColor = "white";
+    });
+});
+
+
